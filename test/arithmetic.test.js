@@ -196,6 +196,14 @@ describe('Arithmetic', function () {
                     done();
                 });
         });
+        it('divides a negative floating point number by a positive floating point number', function (done) {
+            request.get('/arithmetic?operation=divide&operand1=-0.5&operand2=0.25')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: -2 });
+                    done();
+                });
+        });
         it('divides by zero', function (done) {
             request.get('/arithmetic?operation=divide&operand1=21&operand2=0')
                 .expect(200)
